@@ -1,0 +1,2 @@
+# Code
+Junk of leetcode
