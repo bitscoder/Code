@@ -14,9 +14,10 @@ int main(int argc, char** argv){
     
     vector<int> ansVector;
     for(int i = 0; i < 10; i++){
-        if(tapArray[it] != 1){
+        if(tapArray[i] != 1){
             tapArray[i] = 1;
             bfsQueue.push({i, -1});
+            ansVector.push_back(i);
             while(!bfsQueue.empty()){
                 int nodeValue = bfsQueue.front().first();
                 int parentNode = bfsQueue.front().second();
@@ -25,12 +26,17 @@ int main(int argc, char** argv){
                     if(tapArray[it] != 1){
                         tapArray[it] = 1;
                         bfsQueue.push({it,nodeValue});
+                        ansVector.push_back(it);
                     }else(it != parentNode){
+                        for(auto it1: ansVector){
+                            cout << it << endl;
+                        }
                         return true;
                     }
                 }
             }
         }
+        ansVector = new vector<int>();
     }
     //for(int i = 1; )
     

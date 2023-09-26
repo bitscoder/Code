@@ -46,5 +46,12 @@ void dfs(int* keepTapArray, vector<int>  adjList[], int currentNode, vector<int>
             answerVector.push_back(it);
             dfs(keepTapArray, adjList, currentNode, answerVector);
         }
+        
     }
+
+}
+
+int lengthOfLastWord(string s) {
+        string ansString = "";
+        //
 }
