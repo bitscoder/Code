@@ -52,10 +52,47 @@ public:
         return ans;
     }
 };
+string longestCommonPrefix(vector<string> &strs)
+{
+    if (strs.empty())
+    {
+        return "";
+    }
+
+    // Take the first string as the initial prefix
+    string prefix = strs[0];
+
+    for (int i = 1; i < strs.size(); ++i)
+    {
+        int j = 0;
+        // Compare each character in the prefix with the corresponding character in the current string
+        while (j < prefix.size() && j < strs[i].size() && prefix[j] == strs[i][j])
+        {
+            j++;
+        }
+
+        // Update the prefix to the common prefix so far
+        prefix = prefix.substr(0, j);
+
+        // If the prefix becomes empty, there is no common prefix
+        if (prefix.empty())
+        {
+            break;
+        }
+    }
+
+    return prefix;
+}
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     Solution s;
     s.lexicalOrder(13);
+    // flower,flow,flight
+    vector<string> strs;
+    strs.push_back("flower");
+    strs.push_back("flow");
+    strs.push_back("flight");
+    cout << longestCommonPrefix(strs);
 }
