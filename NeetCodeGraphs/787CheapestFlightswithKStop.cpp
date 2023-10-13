@@ -11,15 +11,17 @@ int findCheapestPrice(int n, vector<vector<int>> &flights, int src, int dst, int
     price[src] = 0;
     for (int i = 0; i < k + 1; i++)
     {
-        vector<int> tempPrice = price;
-        for (int j = 0; j < flights.size(); i++)
+        vector<int> helperVector = price;
+        int e = flights.size();
+        for (int j = 0; j < e; j++)
         {
-            if (tempPrice[flights[j][0]] == INT_MAX)
-                continue;
-            if (tempPrice[flights[j][0]] + flights[j][1] < tempPrice[flights[j][1]])
-                tempPrice[flights[j][1]] = tempPrice[flights[j][0]] + flights[j][1];
+            if (helperVector[flights[j][0]] != INT_MAX)
+            {
+                if (helperVector[flights[j][0]] + flights[j][2] < helperVector[flights[j][2]])
+                    helperVector[flights[j][2]];
+            }
         }
-        price = tempPrice;
+        price = helperVector;
     }
     return price[dst] == INT_MAX ? -1 : price[dst];
 }
