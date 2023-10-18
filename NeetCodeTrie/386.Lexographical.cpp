@@ -88,11 +88,36 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     Solution s;
-    s.lexicalOrder(13);
-    // flower,flow,flight
+    // s.lexicalOrder(13);
+    //  flower,flow,flight
     vector<string> strs;
     strs.push_back("flower");
     strs.push_back("flow");
     strs.push_back("flight");
     cout << longestCommonPrefix(strs);
 }
+class Solution
+{
+public:
+    vector<int> lastVisitedIntegers(vector<string> &words)
+    {
+        int n = words.size();
+        vector<int> helperVector;
+        int index = -1;
+        vector<int> ansVector;
+        // 1, prev, 2,
+        for (auto i : words)
+        {
+            if (i == "prev")
+            {
+                ansVector.push_back(index == -1 ? -1 : helperVector[index--]);
+            }
+            else
+            {
+                helperVector.push_back(stoi(i));
+                index = helperVector.size() - 1;
+            }
+        }
+        return ansVector;
+    }
+};
