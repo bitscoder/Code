@@ -89,7 +89,7 @@ int main()
     cin.tie(NULL);
     Solution s;
     // s.lexicalOrder(13);
-    //  flower,flow,flight
+    // flower,flow,flight
     vector<string> strs;
     strs.push_back("flower");
     strs.push_back("flow");
