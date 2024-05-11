@@ -3,6 +3,17 @@
 using namespace std;
 long long maximumTripletValue(vector<int> &nums)
 {
+    vector<vector<int>> helperVector;
+    helperVector.push_back({0});
+    helperVector.push_back({1});
+    helperVector.push_back({2,4,8,6});
+    helperVector.push_back({3,6,9,7,1});
+    helperVector.push_back({4,6});
+    helperVector.push_back({5});
+    helperVector.push_back({6});
+    helperVector.push_back({7,9,3,1});
+    helperVector.push_back({8,4,2,6});
+    helperVector.push_back({9,1});
     long long ans = 0;
     int n = nums.size();
     int a = nums[0];
@@ -73,3 +84,34 @@ string reverseWords(string s)
 
     return ansString.substr(1, ansString.size()) + " " + currString;
 }
+//Input: variables = [[39,3,1000,1000]]
+vector<int> getGoodIndices(vector<vector<int>>& variables, int target) {
+        vector<vector<int>> helperVector;
+        helperVector.push_back({0});
+        helperVector.push_back({1});
+        helperVector.push_back({2,4,8,6});
+        helperVector.push_back({3,6,9,7,1});
+        helperVector.push_back({4,6});
+        helperVector.push_back({5});
+        helperVector.push_back({6});
+        helperVector.push_back({7,9,3,1});
+        helperVector.push_back({8,4,2,6});
+        helperVector.push_back({9,1});
+        vector<int> ansVector;
+        int n = variables.size();
+        for(int i = 0; i < n; i++){
+            if(variables[i][3] > target){
+                int temp1 = variables[i][1] % helperVector[variables[i][0]%10].size();
+                int temp = helperVector[variables[i][0]%10][temp1 == 0 ? 0 : temp1 - 1];
+
+                int a = variables[i][2] % helperVector[temp%variables[i][3]].size();
+                int b = helperVector[temp%variables[i][3]][a == 0 ? 0 : a - 1];
+
+
+                if(b == target){
+                    ansVector.push_back(i);
+                }
+            }
+        }
+        return ansVector;
+    }
